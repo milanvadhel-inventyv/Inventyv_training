@@ -5,7 +5,7 @@ All questions are solved using the **Movie Database schema**.
 
 ---
 
-## 🗂 Database Tables Used
+##  Database Tables Used
 
 The following tables are used across the queries:
 
