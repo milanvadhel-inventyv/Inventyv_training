@@ -1,161 +1,182 @@
 <!DOCTYPE html>
-<html lang="english">
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login | Register page</title>
+
         <style>
-            *{
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            body{
-                height: 100vh;
-            }
-            .container{
-                display:flex;
-                height: 100vh;
-            }
-            .left-section{
-                width:70%;
-                 background: linear-gradient(135deg, #4f46e5, #6366f1);
-                 color:white;
-                 display:flex;
-                 flex-direction: column;
-                 justify-content: center;
-                 padding: 60px;
-            }
-             .logo{
-            display: flex;
-            align-items: center;
-          
-        }
-        .logo img{
-              width: 150px;
-            height: auto;
-            margin-left: 35%;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-           
-            .description{
-                font-size: 20px;
-                line-height: 1.6;
-                max-width:200px;
-                margin-left: 35%;
-            }
-            .right-section{
-                width: 30%;
-                background: #f9fafb;;
-                display:flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .form-box{
-                  width: 90%;
-                max-width: 350px;
-                background: white;
-                padding: 30px;
-                border-radius: 10px;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            }
-            .tabs {
-                  display: flex;
-                 margin-bottom: 20px;
-            }
-            .tabs label{
-                flex:1;
-                text-align: center;
-                padding: 10px;
-                cursor: pointer;
-                background: #e5e7eb;
-                font-weight: bold;
-                border-radius: 5px 5px 0 0;
-            }
-            input[type="radio"] {
-                 display: none;
-            }
-            #login:checked ~ .tabs label[for="login"],
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .left-section {
+            flex: 1 1 70%;
+            min-width: 20rem;
+            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(2rem, 6vw, 5rem);
+            text-align: center;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo img {
+            width: clamp(12rem, 40vw, 22rem);
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .description {
+            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+            line-height: 1.6;
+            max-width: 40ch;
+            margin: 0 auto;
+        }
+
+        .right-section {
+            flex: 1 1 30%;
+            min-width: 20rem;
+            background: #f9fafb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+        }
+
+        .form-box {
+            background: white;
+            width: 100%;
+            max-width: 30rem;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .tabs label {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem;
+            cursor: pointer;
+            background: #e5e7eb;
+            font-weight: bold;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        #login:checked ~ .tabs label[for="login"],
         #register:checked ~ .tabs label[for="register"] {
             background: #4f46e5;
             color: white;
         }
-       
+
         .form {
             display: none;
         }
+
         #login:checked ~ .login-form,
         #register:checked ~ .register-form {
-        display: block;
-        } 
-        .form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+            display: block;
         }
-        .form button {
-    width: 100%;
-    padding: 10px;
-    background: #4f46e5;
-    border: none;
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
- .form button:hover {
+        .form input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .form button {
+            width: 100%;
+            padding: 0.8rem;
+            background: #4f46e5;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+
+        .form button:hover {
             background: #4338ca;
         }
 
         .form a {
             display: block;
-            margin-top: 10px;
+            margin-top: 1rem;
             text-align: center;
             color: #4f46e5;
             text-decoration: none;
-            font-size: 14px;
+            font-size: 0.95rem;
         }
 
         .form a:hover {
             text-decoration: underline;
         }
-      
-        .logo{
-            display: flex;
-            align-items: center;
-          
-        }
-        .logo img{
-              width: 150px;
-            height: auto;
-            margin-left: 35%;
-        }
+ @media (max-width: 63rem) {
+            .container {
+                flex-direction: column;
+            }
 
+            .left-section {
+                padding: 2rem 1.5rem;
+            }
 
-        
-        
-        </style>
+            .description {
+                font-size: 1.1rem;
+            }
+        }
+       
+    </style>
     </head>
+
     <body>
         <div class="container">
-            <!--left section of page-->
-            <div class="left-section">
+
+            <section class="left-section">
                 <div class="logo">
                     <img src="logo.png" alt="Simpliflow">
-
                 </div>
                 <div class="description">
                     Welcome to Simpliflow.
                     Manage your tasks, projects, and workflow efficiently
-                    with a
-                    clean and simple interface.
+                    with a clean and simple interface.
                     Login or register to get started.
                 </div>
-            </div>
-            <!--right section of page-->
-            <div class="right-section">
+            </section>
+
+            <section class="right-section">
                 <div class="form-box">
+
                     <input type="radio" name="tab" id="login" checked>
                     <input type="radio" name="tab" id="register">
 
@@ -164,27 +185,24 @@
                         <label for="register">Register</label>
                     </div>
 
-                    <!--Login form-->
                     <div class="form login-form">
                         <input type="text" placeholder="UserName" required>
-                        <input type="password" placeholder="Password"
-                            required>
+                        <input type="password" placeholder="Password" required>
                         <button>Login</button>
-                        <a href="#forget-password">forget password ?</a>
+                        <a href="#forget-password">Forget password?</a>
                     </div>
-                    <!--Register form-->
+
                     <div class="form register-form">
                         <input type="email" placeholder="Email" required>
                         <input type="text" placeholder="UserName" required>
-                        <input type="password" placeholder="Password"
-                            required>
+                        <input type="password" placeholder="Password" required>
                         <button>Register</button>
-                        <a href="#login">Already have account?</a>
-
+                        <a href="#login">Already have an account?</a>
                     </div>
+
                 </div>
-            </div>
+            </section>
+
         </div>
     </body>
-
 </html>
