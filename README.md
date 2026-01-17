@@ -21,7 +21,11 @@
     │   ├── task1.js
     │   ├── task3.js
     │   └── README.md
-    │
+
+    ├── 05_Exercism_Javascript
+    │   ├── [All Indivisual Task Folder]/
+    |   ├──────[Each_tasks_solution.js]
+    │   └── README.md
     ├── LICENSE
     └── README.md
 
@@ -59,6 +63,10 @@ A **hands-on DBMS assignment** involing multiple sql based query on a **movie da
 - Usage of Symbol
 ---
 
+### 05_Exercism_Javascript
+
+This folder includes JavaScript Learn Mode exercises completed on Exercism to improve JavaScript fundamentals and logic building,
+By Solving Various Problem.
 
 ##  License
 This project is licensed under the terms of the **MIT License**.
