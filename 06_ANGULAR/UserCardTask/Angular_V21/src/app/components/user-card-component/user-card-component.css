@@ -1,0 +1,46 @@
+
+.user-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+  max-width: 20rem;
+}
+
+.user-card:hover {
+  transform: translateY(-0.4rem);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name-input {
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  width: 100%;
+  background: transparent;
+}
+
+.active {
+  color: green;
+  font-weight: 600;
+}
+
+.inactive {
+  color: crimson;
+  font-weight: 600;
+}
+
+.active-card {
+  border: 0.2rem solid #2e7d32; 
+}
+
+.inactive-card {
+  border: 0.2rem solid #c62828; 
+}
+

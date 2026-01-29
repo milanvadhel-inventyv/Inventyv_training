@@ -1,0 +1,5 @@
+<h1>Hello, {{ title }}</h1>
+<div class="container">
+  <app-user-card *ngFor="let user of userInfo$ | async"
+                [user]="user" (ToggleEvent)="ToggleStatus($event)"></app-user-card>
+</div>

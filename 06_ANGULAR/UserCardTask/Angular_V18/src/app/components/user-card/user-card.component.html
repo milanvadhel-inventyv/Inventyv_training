@@ -1,0 +1,46 @@
+
+<mat-card class="user-card"
+    [class.active-card]="user.status === 'Active'"
+    [class.inactive-card]="user.status === 'InActive'">
+
+    <mat-card-header>
+        <div mat-card-avatar class="avatar">
+            <img [src]="user.Image_Url" alt="avatar || {{user.Image_Url}}" />
+        </div>
+
+        <mat-card-title>
+            <input #inputField
+                matInput
+                class="name-input"
+                type="text"
+                [(ngModel)]="user.name"
+                placeholder="Enter name" />
+        </mat-card-title>
+
+        <mat-card-subtitle>
+            Age: {{ user.age }}
+        </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <p>{{ user.name }}</p>
+
+        <p>
+            <strong>Status:</strong>
+            <span
+                [class.active]="user.status === 'Active'"
+                [class.inactive]="user.status === 'InActive'">
+                {{ user.status }}
+            </span>
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button
+            mat-raised-button
+            [color]="user.status === 'Active' ? 'primary' : 'warn'"
+            (click)="ChangeStatus()"
+            [disabled]="user.name.length===0 ? true : false">
+            {{ user.status === 'Active' ? 'Deactivate' : 'Activate' }}
+        </button>
+    </mat-card-actions>
+</mat-card>
