@@ -1,0 +1,28 @@
+<div class="terminal">
+
+  @for (cmd of history; track $index) {
+  <div class="terminal-line">
+    <span class="prompt">$</span>
+    <span class="command">{{ cmd.command}}</span>
+  </div>
+
+  <div class="terminal-output">
+    <div class="output">{{cmd.success}}</div>
+    <div class="explanation">{{ cmd.explanation }}</div>
+
+    @for(line of cmd.output;track $index){
+    <div class="output">{{ line}}</div>
+    }
+  </div>
+  }
+
+  <div class="terminal-line">
+    <span class="prompt">$</span>
+    <input
+      type="text"
+      class="terminal-input"
+      #input
+      (keyup.enter)="UpdateInput(input.value, input)" />
+  </div>
+
+</div>

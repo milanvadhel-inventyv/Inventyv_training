@@ -1,0 +1,47 @@
+.terminal {
+  color: #c9d1d9;
+  padding: 1rem;
+}
+
+.terminal-line {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size:1.4rem ;
+}
+
+.prompt {
+  color: #7ee787;
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.command {
+  color: #c9d1d9;
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #c9d1d9;
+  font-family: inherit;
+  font-size: 1.5rem;
+  flex: 1;
+}
+
+.terminal-output {
+  margin-left: 1.2rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+}
+
+.output {
+  color: #c9d1d9;
+  white-space: pre-wrap;
+}
+
+.explanation {
+  color: #8b949e;
+  font-size: 1rem;
+}
