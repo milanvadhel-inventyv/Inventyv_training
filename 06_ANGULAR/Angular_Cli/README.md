@@ -1,59 +1,65 @@
-# AngularCli
+# Angular Web CLI Simulator
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+An interactive web-based terminal simulator that demonstrates how Angular CLI commands work. 
 
-## Development server
+## Overview
 
-To start a local development server, run:
+This Angular application simulates a command-line interface where users can execute Angular CLI commands and see realistic output responses. The simulator provides immediate feedback, helping developers understand what each command does before using them in real projects.
 
-```bash
-ng serve
-```
+### Key Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Interactive Terminal Interface**: A browser-based terminal that mimics the actual Angular CLI experience
+- **Real-time Command Execution**: Type commands and see animated output responses
+- **Command Validation**: Recognizes valid Angular CLI commands and their aliases
+- **Educational Feedback**: Each command includes explanations of what it does
+- **Animated Output**: Progressive display of command results for a realistic terminal feel
+- **Command History**: Maintains a history of executed commands within the session
+- **Clear Functionality**: Reset the terminal with `clear` or `cls` commands
 
-## Code scaffolding
+## How It Works
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Architecture
 
-```bash
-ng generate component component-name
-```
+The application is built with Angular standalone components and uses the following structure:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **Component**: `App` - Main application component handling the terminal interface
+- **Interface**: `CliInterface` - Type definition for CLI command structure
+- **Change Detection**: Manual change detection for smooth output animation
 
-```bash
-ng generate --help
-```
+### Command Processing Flow
 
-## Building
+1. **User Input**: User types a command in the terminal input field
+2. **Command Parsing**: The input is converted to lowercase and matched against available commands
+3. **Command Lookup**: The system searches for the command in the static command database
+4. **Output Generation**: If found, the command's output is retrieved and prepared for display
+5. **Animated Display**: Output lines are displayed progressively with a 500ms delay between lines
+6. **History Update**: The command and its results are added to the terminal history
 
-To build the project run:
+### Supported Commands
 
-```bash
-ng build
-```
+The simulator currently supports the following Angular CLI commands:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+#### Project Management
+- `ng new my-app` - Creates a new Angular workspace
+- `ng version` / `ng v` - Displays version information
+- `ng help` / `ng h` - Shows all available commands
 
-## Running unit tests
+#### Development
+- `ng serve` / `ng s` - Starts the development server
+- `ng serve --open` - Starts dev server and opens browser
+- `ng build` - Builds the application for production
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+#### Code Generation
+- `ng generate component home` / `ng g c home` - Generates a new component
+- `ng generate service auth` / `ng g s auth` - Generates a new service
 
-```bash
-ng test
-```
+#### Testing & Analytics
+- `ng test` - Runs unit tests
+- `ng analytics` - Shows analytics configuration
 
-## Running end-to-end tests
+#### Navigation
+- `cd home` - Simulates directory navigation
 
-For end-to-end (e2e) testing, run:
+#### Terminal Control
+- `clear` / `cls` - Clears the terminal history
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
