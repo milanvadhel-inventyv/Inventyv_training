@@ -1,59 +1,209 @@
-# AngularV21
+# Angular 21 User Profile Card 
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
+## What This App Does
 
-## Development server
+Fetches user data from an API and displays interactive profile cards. Users can edit names and toggle status between Active/Inactive.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+##  Architecture Flow
+
+```
+API (dummyjson.com) 
+  → Service fetches & transforms data 
+  → Stores in Signal<UserInfo[]>
+  → Parent Component reads Signal
+  → Creates multiple Child Components 
+  → Each Child receives Signal input
+  → Each Child manages local Signal state
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## How Each Feature is Implemented
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 1. Data Binding
 
-```bash
-ng generate component component-name
+| Type | How It's Used | Where |
+|------|---------------|-------|
+| **Interpolation** `{{ }}` | Display age and status | `Age: {{ user()?.age }}` |
+| **Property Binding** `[property]` | Bind avatar image | `[src]="user()?.Image_Url"` |
+| **Two-Way Binding** `[(ngModel)]` | **Modified for Signals** | Manual `[ngModel]` + `(ngModelChange)` |
+| **Event Binding** `(event)` | Toggle button click | `(click)="ChangeStatus()"` |
+| **Class Binding** `[class.name]` | Dynamic border colors | `[class.active-card]="user()?.status === 'Active'"` |
+
+**Result**: Card updates automatically when Signal changes. Green border for active, red for inactive.
+
+### 2. Component Communication
+
+#### Parent → Child (Signal Input)
+```
+Parent passes user object → Child receives via input() Signal → Child creates local Signal
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 3. Lifecycle Hooks
 
-```bash
-ng generate --help
+| Hook | When | Used For |
+|------|------|----------|
+| `constructor` | Component created | Log initial state (user Signal is null) |
+| `ngOnInit` | Component starts | Log user Signal, fetch data in parent |
+| `ngOnChanges` | Input changes | Sync input Signal to local Signal |
+| `ngAfterViewInit` | View ready | Access input field and buttons via ViewChild |
+
+**Result**: Console logs show execution order and Signal state.
+
+---
+
+### 4. View Queries
+
+#### `@ViewChild` - Single Element
+```typescript
+@ViewChild("inputField") inputfield!: ElementRef<HTMLInputElement>;
+```
+**Purpose**: Direct access to name input field for manipulation/validation
+
+**Usage in template**:
+```html
+<input #inputField matInput [ngModel]="user()?.name" />
 ```
 
-## Building
+#### `@ViewChildren` - Multiple Elements
+```typescript
+@ViewChildren(MatButton) matbutton!: QueryList<MatButton[]>;
+```
+**Purpose**: Access all Material buttons in the card
 
-To build the project run:
+**Usage**: Logged in `ngAfterViewInit` as array: `this.matbutton.toArray()`
 
-```bash
-ng build
+**Result**: Console shows input element ID and array of buttons
+
+---
+
+### 5. Service & Signal Pattern
+
+#### Service Layer (Signal-Based)
+```typescript
+export class UserCardService {
+  users = signal<UserInfo[]>([]);  //  Signal instead of Observable
+  
+  getUsers(): void {
+    this.http.get<any>(API_URL).subscribe({
+      next: (res) => {
+        const transformed = res.users.map(...);
+        this.users.set(transformed);  //  Update Signal
+      }
+    });
+  }
+}
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+**What it does**: 
+- Creates a Signal to hold user array
+- Fetches data from API using HttpClient
+- Transforms data and updates Signal with `.set()`
+- Combines firstName + lastName, adds random status
 
-## Running unit tests
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+---
 
-```bash
-ng test
+### 6. Angular Material
+
+**Components Used**:
+- `<mat-card>` → Card container with header/content/actions
+- `<input matInput>` → Material-styled text input
+- `<button mat-raised-button>` → Material-styled elevated buttons
+
+**Configuration**: Import Material modules directly in standalone component
+
+---
+
+### 7. Bonus Feature
+
+```html
+[disabled]="user.name.length === 0 ? true : false"
+```
+**Logic**: Button disabled when name is empty, prevents toggling invalid state
+
+---
+
+### Manual Two-Way Binding with Signals
+
+**Old Way (v16/v18)**:
+```html
+<input [(ngModel)]="user.name" />
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+**New Way (v21 with Signals)**:
+```html
+<input 
+  [ngModel]="user()?.name"
+  (ngModelChange)="UserNameChange($event)" />
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## Visual Changes
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Active User**:
+- Green border (`active-card` class)
+- Green status badge
+- Blue "Deactivate" button
+
+**Inactive User**:
+- Red border (`inactive-card` class)
+- Red status badge  
+- Red "Activate" button
+
+**Empty Name**:
+- Toggle button becomes disabled (grayed out)
+
+
+---
+
+## Migration Notes (v18 → v21)
+
+### To Convert Observable to Signal:
+
+**Before (v18)**:
+```typescript
+userInfo$: Observable<UserInfo[]>;
+ngOnInit() {
+  this.userInfo$ = this.service.GetUserData();
+}
+```
+
+**After (v21)**:
+```typescript
+users = this.service.users;  // Direct Signal reference
+ngOnInit() {
+  this.service.getUsers();  // Service updates Signal
+}
+```
+
+### To Convert @Input/@Output to input()/output():
+
+**Before (v18)**:
+```typescript
+@Input() user!: UserInfo;
+@Output() ToggleEvent = new EventEmitter<string>();
+```
+
+**After (v21)**:
+```typescript
+userSignal = input<UserInfo | null>(null);
+ToggleEvent = output<number | undefined>();
+```
+
+### To Convert *ngFor to @for:
+
+**Before (v18)**:
+```html
+<div *ngFor="let user of userInfo$ | async">
+```
+
+**After (v21)**:
+```html
+@for (user of users(); track user.id) {
+  <div>
+}
+```
