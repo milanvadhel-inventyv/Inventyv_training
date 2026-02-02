@@ -21,11 +21,21 @@
     │   ├── task1.js
     │   ├── task3.js
     │   └── README.md
-
     ├── 05_Exercism_Javascript
     │   ├── [All Indivisual Task Folder]/
     |   ├──────[Each_tasks_solution.js]
     │   └── README.md
+    ├── 06_ANGULAR/
+    │   ├── Angular_Cli
+    |    └── README.md
+    │   ├── UserCardTask
+    |    └──Angular_V16
+    |       └── README.md
+    |    └──Angular_V18
+    |       └── README.md
+    |    └──Angular_V21
+    |       └── README.md
+    │   
     ├── LICENSE
     └── README.md
 
@@ -68,5 +78,11 @@ A **hands-on DBMS assignment** involing multiple sql based query on a **movie da
 This folder includes JavaScript Learn Mode exercises completed on Exercism to improve JavaScript fundamentals and logic building,
 By Solving Various Problem.
 
+---
+
+### 06_ANGULAR
+This folder includes Practises of  Angualr Assignement where different Angular App/project Created for understanding the Angular Concept with Practical Implementation.
+
+---
 ##  License
 This project is licensed under the terms of the **MIT License**.
