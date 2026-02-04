@@ -1,0 +1,33 @@
+
+<div class="header-section">
+  <h1 class="page-title">{{title}}</h1>
+  <div class="cart-summary">
+    Total Items in Cart: <span class="quantity-badge">{{TotalQuantity()}}</span>
+  </div>
+</div>
+<div class="container">
+
+  @for(product of Products();track product.Id)
+  {
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{product.ProductName}}</mat-card-title>
+      <mat-card-subtitle><span>Category::</span>{{product.Category}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <span>
+        <p>{{product.Price}}</p>
+      </span>
+      <p>{{product.Quantity}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button
+        (click)="AddToCart(product.Id)"
+        [disabled]="product.Quantity === 0">AddTOCart</button>
+    </mat-card-actions>
+  </mat-card>
+  }
+
+</div>
+
+<app-shopping-cart></app-shopping-cart>

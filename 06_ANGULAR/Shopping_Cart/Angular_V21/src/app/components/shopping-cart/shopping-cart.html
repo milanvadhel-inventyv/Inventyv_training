@@ -1,0 +1,51 @@
+<div class="cart-container">
+    <h2>Shopping Cart</h2>
+
+    @for(item of Carts(); track item.Id) {
+    <mat-card class="cart-item">
+        <mat-card-content>
+            <div class="item-details">
+                <h3 class="item-name">{{item.Name}}</h3>
+                <div class="item-info">
+                    <span class="quantity">Qty: {{item.Quantity}}</span>
+                    <span class="price">₹{{item.Price}} each</span>
+                </div>
+            </div>
+            <span class="total-price">Total: ₹{{item.TotalPrice}}</span>
+            <div class="item-actions">
+                <button mat-raised-button color="warn"
+                    (click)="RemoveOneItemQuantity(item.Id)">-1</button>
+            </div>
+            <div class="item-actions">
+                <button mat-raised-button color="warn"
+                    (click)="ClearItem(item.Id)">
+                    Remove
+                </button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    }
+
+    @if(Carts().length === 0) {
+    <div class="empty-cart">
+        <p>Your cart is empty</p>
+    </div>
+    }
+
+</div>
+
+<div class="footer">
+    @if(Carts().length >0){
+    <mat-card>
+        <mat-card-content>
+            <span>{{TotalBillPrice()}}</span>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button color="warn"
+                (click)="ClearAllItem()">ClearCart</button>
+        </mat-card-actions>
+
+    </mat-card>
+    }
+</div>

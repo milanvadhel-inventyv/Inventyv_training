@@ -1,0 +1,244 @@
+/* Cart Container */
+.cart-container {
+  max-width: 75rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.cart-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1976d2;
+  margin-bottom: 1.5rem;
+}
+
+/* Cart Item Card - Row Layout */
+.cart-item {
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-item:hover {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+}
+
+.cart-item mat-card-content {
+  padding: 1rem !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Item Details - Left Side */
+.item-details {
+  flex: 1;
+  min-width: 15rem;
+}
+
+.item-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 0.5rem 0;
+}
+
+.item-info {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.quantity {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #555;
+  background-color: #e3f2fd;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.price {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #2e7d32;
+}
+
+/* Total Price - Center */
+.total-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2e7d32;
+  background-color: #f1f8e9;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #4caf50;
+  white-space: nowrap;
+}
+
+/* Item Actions - Right Side */
+.item-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.item-actions button {
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.375rem;
+  min-width: 5rem;
+  transition: all 0.2s ease;
+}
+
+.item-actions button:hover:not([disabled]) {
+  transform: scale(1.05);
+}
+
+.item-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Empty Cart Message */
+.empty-cart {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+
+.empty-cart p {
+  font-size: 1.25rem;
+  color: #666;
+  margin: 0;
+}
+
+.empty-cart p::before {
+  content: '🛒 ';
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Footer Section */
+.footer {
+  max-width: 75rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.footer mat-card {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  border: 2px solid #ddd;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.75rem;
+}
+
+.footer mat-card-content {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer mat-card-content span {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #2e7d32;
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  border: 2px solid #4caf50;
+}
+
+.footer mat-card-content span::before {
+  content: 'Total Bill: ₹';
+  color: #333;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.footer mat-card-actions {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.footer mat-card-actions button {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 2.5rem;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(244, 67, 54, 0.3);
+  transition: all 0.3s ease;
+}
+
+.footer mat-card-actions button:hover:not([disabled]) {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.375rem 0.75rem rgba(244, 67, 54, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 64rem) {
+  .cart-item mat-card-content {
+    flex-wrap: wrap;
+  }
+  
+  .item-details {
+    flex: 1 1 100%;
+  }
+  
+  .total-price {
+    flex: 1;
+  }
+}
+
+@media (max-width: 40rem) {
+  .cart-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .cart-item mat-card-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  
+  .item-details {
+    min-width: auto;
+  }
+  
+  .total-price {
+    text-align: center;
+    font-size: 1.125rem;
+  }
+  
+  .item-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .item-actions button {
+    flex: 1;
+  }
+  
+  .footer mat-card-content span {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .footer mat-card-actions button {
+    padding: 0.625rem 2rem;
+    font-size: 0.875rem;
+  }
+}
