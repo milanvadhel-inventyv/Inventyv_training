@@ -1,0 +1,228 @@
+.container {
+  max-width: 75rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.container h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1976d2;
+  margin-bottom: 1.5rem;
+}
+
+.cart-item {
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-item:hover {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+}
+
+.cart-item mat-card-content {
+  padding: 1rem !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cart-item h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  flex: 1;
+  min-width: 15rem;
+}
+
+.cart-item p {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+}
+
+.cart-item p:nth-of-type(1) {
+  font-weight: 600;
+  color: #555;
+  background-color: #e3f2fd;
+}
+
+.cart-item p:nth-of-type(2) {
+  color: #2e7d32;
+}
+
+.cart-item p:nth-of-type(3) {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2e7d32;
+  background-color: #f1f8e9;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #4caf50;
+}
+
+.cart-item button {
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.375rem;
+  min-width: 5rem;
+  transition: all 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.cart-item button:hover:not([disabled]) {
+  transform: scale(1.05);
+}
+
+.cart-item button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.container > p {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  color: #666;
+}
+
+.container > p::before {
+  content: '🛒 ';
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.container ~ mat-card,
+body > mat-card:last-of-type {
+  max-width: 75rem;
+  margin: 2rem auto;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  border: 2px solid #ddd;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.75rem;
+}
+
+.container ~ mat-card mat-card-content,
+body > mat-card:last-of-type mat-card-content {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+.container ~ mat-card mat-card-content::after,
+body > mat-card:last-of-type mat-card-content::after {
+  content: '';
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  border: 2px solid #4caf50;
+}
+
+.container ~ mat-card mat-card-actions,
+body > mat-card:last-of-type mat-card-actions {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.container ~ mat-card mat-card-actions button,
+body > mat-card:last-of-type mat-card-actions button {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 2.5rem;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(244, 67, 54, 0.3);
+  transition: all 0.3s ease;
+}
+
+.container ~ mat-card mat-card-actions button:hover:not([disabled]),
+body > mat-card:last-of-type mat-card-actions button:hover:not([disabled]) {
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.375rem 0.75rem rgba(244, 67, 54, 0.4);
+}
+
+body > p:last-child {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+  margin: 2rem auto;
+  max-width: 75rem;
+  font-size: 1.25rem;
+  color: #666;
+}
+
+@media (max-width: 64rem) {
+  .cart-item mat-card-content {
+    flex-wrap: wrap;
+  }
+  
+  .cart-item h3 {
+    flex: 1 1 100%;
+  }
+  
+  .cart-item p:nth-of-type(3) {
+    flex: 1;
+  }
+}
+
+@media (max-width: 40rem) {
+  .container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .cart-item mat-card-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  
+  .cart-item h3 {
+    min-width: auto;
+  }
+  
+  .cart-item p:nth-of-type(3) {
+    text-align: center;
+    font-size: 1.125rem;
+  }
+  
+  .cart-item button {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+  
+  .container ~ mat-card mat-card-content,
+  body > mat-card:last-of-type mat-card-content {
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .container ~ mat-card mat-card-actions button,
+  body > mat-card:last-of-type mat-card-actions button {
+    padding: 0.625rem 2rem;
+    font-size: 0.875rem;
+  }
+}
