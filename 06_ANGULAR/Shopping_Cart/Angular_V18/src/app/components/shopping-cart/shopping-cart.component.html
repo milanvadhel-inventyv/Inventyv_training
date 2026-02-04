@@ -1,0 +1,51 @@
+<div class="container">
+    <h2>Shopping Cart</h2>
+
+    @for(item of (carts$ | async); track item.Id) {
+    <mat-card class="cart-item">
+        <mat-card-content>
+            <h3>{{ item.Name }}</h3>
+
+            <p>Qty: {{ item.Quantity }}</p>
+            <p>₹{{ item.Price }} each</p>
+            <p>Total: ₹{{ item.TotalPrice }}</p>
+
+            <button mat-raised-button color="warn"
+                [disabled]="item.Quantity === 0"
+                (click)="RemoveOneItemQuantity(item.Id)">
+                -1
+            </button>
+
+            <button mat-raised-button color="warn"
+                (click)="ClearItem(item.Id)">
+                Remove
+            </button>
+        </mat-card-content>
+    </mat-card>
+    }
+
+    @if((carts$ | async)?.length === 0) {
+    <p>Your cart is empty</p>
+    }
+</div>
+
+@if (carts$ | async; as carts) {
+
+@if (carts.length > 0) {
+
+<mat-card>
+    <mat-card-content>
+        Total Bill: ₹{{ TotalBillPrice() }}
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-raised-button color="warn"
+            (click)="ClearAllItem()">
+            Clear Cart
+        </button>
+    </mat-card-actions>
+</mat-card>
+
+}
+
+}
