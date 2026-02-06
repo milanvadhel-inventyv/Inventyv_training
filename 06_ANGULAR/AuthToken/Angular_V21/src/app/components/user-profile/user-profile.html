@@ -1,0 +1,22 @@
+<p>user-profile works!</p>
+@if(User()){
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{User()?.Name}}</mat-card-title>
+        <mat-card-subtitle>{{User()?.Gender}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <img mat-card-avtar [src]="User()?.Image"
+            alt="avatar || {{User()?.Image}" />
+
+        <span>{{User()?.Email}}</span>
+    </mat-card-content>
+    <!-- <mat-card-actions>
+        <button mat-button>Action1</button>
+
+    </mat-card-actions> -->
+
+</mat-card>}
+@else{
+<h1>Loading User Data</h1>
+}

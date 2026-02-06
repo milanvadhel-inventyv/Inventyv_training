@@ -1,0 +1,22 @@
+<p>login!</p>
+<!-- <input  type="string" placeholder="EnterName">
+<input type="password" placeholder="EnterPassword">
+<input type="Email" placeholder="EnterEmail"> -->
+<form (keyUp.enter)="Login()">
+    <div>
+        <label for="UserName">UserName</label>
+        <input type="text" id="UserName" name="UserName" [(ngModel)]="UserName"
+            required>
+    </div>
+    <div>
+        <label for="Email">Email</label>
+        <input type="Email" id="Email" name="Email" [(ngModel)]="Email"
+            required>
+    </div>
+    <div>
+        <label for="Password">PassWord</label>
+        <input type="password" id="PassWord" name="PassWord"
+            [(ngModel)]="Password" required>
+    </div>
+    <button (click)="Login()">Login</button>
+</form>
