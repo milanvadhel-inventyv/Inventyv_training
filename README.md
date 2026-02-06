@@ -28,6 +28,20 @@
     ├── 06_ANGULAR/
     │   ├── Angular_Cli
     |    └── README.md
+    │   ├── AuthToken
+    |    └──Angular_V16
+    |       └── README.md
+    |    └──Angular_V18
+    |       └── README.md
+    |    └──Angular_V21
+    |       └── README.md
+    │   ├── Shopping_Cart
+    |    └──Angular_V16
+    |       └── README.md
+    |    └──Angular_V18
+    |       └── README.md
+    |    └──Angular_V21
+    |       └── README.md
     │   ├── UserCardTask
     |    └──Angular_V16
     |       └── README.md
