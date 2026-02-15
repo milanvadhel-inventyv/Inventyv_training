@@ -24,6 +24,17 @@ WorkFlow of This Task:
 
 - Finally, the response returned from the **check** function is handled using `.then()` and `.catch()` and printed to the console.
 
+## Task-2
+
+Here in This task We need t o print Numerical pattern..with Some Constraints like  use Only 3 vars.
+ 
+ `My Approach:`
+  here instead of using +1 (a static value addition) , I  have used concept of bit manipulation 
+   logic for that : 2's complement = 1's complement + 1
+  ~ operator do inverting of all bits , means 1's complemnt
+   but actual representation of numbers are 2's complemnt representation so -(~(n))=n+1 ...
+
+
  ## Task-3
 
 Here in This Task, I focus on understanding **Symbols in JavaScript**,.
