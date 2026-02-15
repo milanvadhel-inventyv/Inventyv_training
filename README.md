@@ -19,6 +19,7 @@
     │   
     ├── 04_JAVASCRIPT_TASK/
     │   ├── task1.js
+    │   ├── task2.js
     │   ├── task3.js
     │   └── README.md
     ├── 05_Exercism_Javascript
@@ -83,6 +84,7 @@ A **hands-on DBMS assignment** involing multiple sql based query on a **movie da
 **Topics include:**
 - Arrays and object manipulation
 - Function execution flow
+- Print Numerical Patterns with Constraints
 - Promises and asynchronous handling
 - Usage of Symbol
 ---
